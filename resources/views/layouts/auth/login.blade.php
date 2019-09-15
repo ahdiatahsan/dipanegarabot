@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Login</title>
+  <title>Login | Chatbot STMIK Dipanegara Makassar</title>
   <meta name="description" content="Login page example">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="shortcut icon" href="./assets/media/logos/favicon.ico" />
+  <link rel="shortcut icon" href="{{ asset('media/ico.png') }}" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
   <script>
@@ -46,7 +46,7 @@
             <div class="kt-login__form">
 
               <div class="kt-grid__item kt-grid__item--middle">
-                <h3 class="kt-login__title">Welcome to Metronic!</h3>
+                <h3 class="kt-login__title">Aplikasi Chatbot STMIK Dipanegara Makassar</h3>
               </div>
 
               <div class="kt-login__title">
@@ -67,32 +67,5 @@
       </div>
     </div>
 
-    <!-- end::Global Config -->
-
-    <!--begin:: Global Mandatory Vendors -->
-    <script src="./assets/vendors/general/jquery/dist/jquery.js" type="text/javascript"></script>
-    <script src="./assets/vendors/general/popper.js/dist/umd/popper.js" type="text/javascript"></script>
-    <script src="./assets/vendors/general/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="./assets/vendors/general/js-cookie/src/js.cookie.js" type="text/javascript"></script>
-    <script src="./assets/vendors/general/moment/min/moment.min.js" type="text/javascript"></script>
-    <script src="./assets/vendors/general/tooltip.js/dist/umd/tooltip.min.js" type="text/javascript"></script>
-    <script src="./assets/vendors/general/perfect-scrollbar/dist/perfect-scrollbar.js" type="text/javascript"></script>
-    <script src="./assets/vendors/general/sticky-js/dist/sticky.min.js" type="text/javascript"></script>
-    <script src="./assets/vendors/general/wnumb/wNumb.js" type="text/javascript"></script>
-
-
-
-    <!--begin::Global Theme Bundle(used by all pages) -->
-    <script src="./assets/js/demo1/scripts.bundle.js" type="text/javascript"></script>
-
-    <!--end::Global Theme Bundle -->
-
-    <!--begin::Page Scripts(used by this page) -->
-    <script src="./assets/js/demo1/pages/login/login-1.js" type="text/javascript"></script>
-
-    <!--end::Page Scripts -->
 </body>
-
-<!-- end::Body -->
-
 </html>
