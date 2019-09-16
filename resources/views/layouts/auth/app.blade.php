@@ -8,21 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="shortcut icon" href="{{ asset('media/ico.png') }}" />
 
-  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
-  <script>
-    WebFont.load({
-      google: {
-        "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"]
-      },
-      active: function () {
-        sessionStorage.fonts = true;
-      }
-    });
-  </script>
+  <link href="https://fonts.googleapis.com/css?family=Poppins|Roboto&display=swap" rel="stylesheet"> 
 
   <link href="{{ asset('css/login.min.css') }}" rel="stylesheet" type="text/css" />
-  <link href="{{ asset("vendors/general/perfect-scrollbar/css/perfect-scrollbar.css") }}" rel="stylesheet"
-    type="text/css" />
   <link href="{{ asset("css/style.bundle.min.css") }}" rel="stylesheet" type="text/css" />
 </head>
 
@@ -42,25 +30,14 @@
 
         <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
           <div class="kt-login__body">
-            <!--begin::Signin-->
             <div class="kt-login__form">
-
               <div class="kt-grid__item kt-grid__item--middle">
-                <h3 class="kt-login__title">Aplikasi Chatbot STMIK Dipanegara Makassar</h3>
+                <h3 class="kt-login__title kt-font-info">Aplikasi Chatbot STMIK Dipanegara Makassar</h3>
               </div>
-
               <div class="kt-login__title">
                 <h3>Sign In</h3>
               </div>
-
               @yield('content')
-              <br/><br/>
-              <div class="kt-login__copyright kt-font-info">
-                <h6>&copy;
-                  {{ base64_decode('MjAxOSBNdWguTXV6aGF3aXIgQW1yaSAoMTUyMTAwKSB8IEFuZGkgTnVybmFqaWhhdGluIE5pc3dhICgxNTIwODgp') }}
-                </h6>
-              </div>
-
             </div>
           </div>
         </div>
