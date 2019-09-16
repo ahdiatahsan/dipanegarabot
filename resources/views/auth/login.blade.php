@@ -1,4 +1,4 @@
-@extends('layouts.auth.login')
+@extends('layouts.auth.app')
 
 @section('content')
   <form class="kt-form" method="POST" action="{{ route('login') }}" novalidate="novalidate">
@@ -6,7 +6,7 @@
 
     <div class="form-group">
       <input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" placeholder="Email" name="email" value="{{ old('email') }}" autocomplete="off" required autofocus>
-      
+
       @if ($errors->has('email'))
         <div class="invalid-feedback">
           <strong>{{ $errors->first('email') }}</strong>
@@ -16,7 +16,7 @@
 
     <div class="form-group">
       <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password" placeholder="Password" name="password" value="{{ old('password') }}" autocomplete="off" required>
-        
+
       @if ($errors->has('password'))
         <div class="invalid-feedback">
           <strong>{{ $errors->first('password') }}</strong>
@@ -46,4 +46,8 @@
     </div>
 
   </form>
+  <br/><br/>
+  <div>
+    {{ base64_decode('wqkgMjAxOSBNdWguTXV6aGF3aXIgQW1yaSAoMTUyMTAwKSB8IEFuZGkgTnVybmFqaWhhdGluIE5pc3dhICgxNTIwODgpIA==') }}
+  </div>
 @endsection
