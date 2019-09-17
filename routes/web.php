@@ -24,3 +24,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('dashboard', 'DashboardController');
 Route::resource('room', 'RoomController');
+Route::any('getRoom', 'RoomController@getData')->name('room.getData');
