@@ -4,9 +4,41 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Room;
+use Redirect, Response;
+use Datatables;
 
 class RoomController extends Controller
 {
+    public function getData()
+    {
+        return Datatables::of(Room::all())
+        ->addIndexColumn()
+        ->addColumn('action', function($room){
+            $actions =
+            '<div class="kt-align-center">'.
+                '<span class="dropdown" title="Pilihan">'.
+                    '<a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="false">'.
+                    '<i class="flaticon2-menu-4"></i>'.
+                    '</a>'.
+                    '<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-32px, 27px, 0px);">'.
+                    '<form action="'.route('room.destroy', $room->id).'" method="POST">'.
+                        '<input type="hidden" name="_token" value="'.csrf_token().'">'.
+                        '<input type="hidden" name="_method" value="DELETE">'.
+                        '<button type="submit" class="dropdown-item kt-font-bolder kt-font-danger" OnClick="return confirm(\'Hapus data ini ?\')"><i class="la la-remove kt-font-danger"></i> Hapus</button>'.
+                        '<a class="dropdown-item kt-font-bolder kt-font-success" href="#"><i class="la la-edit kt-font-success"></i> Ubah</a>'.
+                    '</form>'.
+                    '</div>'.
+                '</span>'.
+                '<a href="'. route('room.show', $room->id) .'" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Lihat Detail">'.
+                    '<i class="flaticon2-search"></i>'.
+                '</a>'.
+            '</div>';
+            return $actions;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +46,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::all();
-        return view('admin.room.index', compact('rooms'));
+        return view('admin.room.index');
     }
 
     /**
@@ -25,7 +56,7 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.room.create');
     }
 
     /**
@@ -36,7 +67,14 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'floor' => 'required|integer|max:5',
+        ]);
+
+        Room::create($validatedData);
+
+        return redirect()->route('room.index')->with('success', 'Data Ruangan berhasil ditambahkan.');
     }
 
     /**
@@ -45,9 +83,9 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Room $room)
     {
-        //
+        return view('admin.room.show', compact('room'));
     }
 
     /**
@@ -58,7 +96,7 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.room.edit');
     }
 
     /**
@@ -79,8 +117,9 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Room $room)
     {
-        //
+        $room->delete();
+        return redirect()->route('room.index')->with('success', 'Data Ruangan berhasil dihapus.');
     }
 }
