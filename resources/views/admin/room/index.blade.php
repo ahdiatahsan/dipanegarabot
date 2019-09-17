@@ -4,7 +4,8 @@
 
 {{-- Style for this page --}}
 @section('style')
-
+<link rel="stylesheet" href="{{ asset('vendors/custom/datatables/datatables.bundle.min.css') }}">
+<link rel="stylesheet" href="{{ asset('vendors/general/sweetalert2/dist/sweetalert2.min.css') }}">
 @endsection
 
 {{-- Top JS for this Page --}}
@@ -24,11 +25,11 @@
 {{-- Main Content --}}
 @section('content')
 
-@if (session()->get('success'))
+@if ($message = session()->get('success'))
 {{-- Success Notification --}}
 <div class="alert alert-light alert-elevate" role="alert">
   <div class="alert-icon"><i class="la la-check-circle kt-font-success"></i></div>
-  <div class="alert-text">A simple dark alert—check it out!</div>
+  <div class="alert-text">{{$message}}</div>
   <div class="alert-close">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true"><i class="la la-close"></i></span>
@@ -49,19 +50,50 @@
     </div>
     <div class="kt-portlet__head-toolbar">
       <div class="kt-portlet__head-wrapper">
-        <div class="dropdown dropdown-inline">
-          <a href="" class="btn btn-brand btn-icon-sm"><i class="flaticon2-plus"></i>Tambah Data</a>
-        </div>
+          <a href="{{ route('room.create') }}" class="btn btn-brand btn-icon-sm"><i class="flaticon2-plus"></i>Tambah Data</a>
       </div>
     </div>
   </div>
   <div class="kt-portlet__body">
-
+    <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline"
+            id="table" role="grid" aria-describedby="kt_table_1_info">
+            <thead>
+              <tr role="row">
+                <th class="sorting kt-font-primary kt-font-bolder" style="width: 20px">No.</th>
+                <th class="sorting kt-font-primary kt-font-bolder">Nama Ruangan</th>
+                <th class="sorting kt-font-primary kt-font-bolder">Lantai</th>
+                <th class="sorting_disabled kt-font-primary kt-font-bolder kt-align-center" style="min-width: 80px">Tindakan</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 @endsection
 
 {{-- Bottom JS for this Page --}}
 @section('bottomjs')
-
+<script src="{{ asset('vendors/custom/datatables/datatables.bundle.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('vendors/general/sweetalert2/dist/sweetalert2.all.min.js') }}" type="text/javascript"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $('#table').DataTable({
+      responsive: true,
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('room.getData') }}",
+      columns: [
+        { data: 'DT_RowIndex', name: 'DT_RowIndex' },
+        { data: 'name', name: 'name' },
+        { data: 'floor', name: 'floor' },
+        { data: 'action', name: 'action', orderable: false, searchable: false },
+      ]
+    });
+  });
+</script>
 @endsection
