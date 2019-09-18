@@ -25,7 +25,7 @@ class RoomController extends Controller
                         '<input type="hidden" name="_token" value="'.csrf_token().'">'.
                         '<input type="hidden" name="_method" value="DELETE">'.
                         '<button type="submit" class="dropdown-item kt-font-bolder kt-font-danger" OnClick="return confirm(\'Hapus data ini ?\')"><i class="la la-remove kt-font-danger"></i> Hapus</button>'.
-                        '<a class="dropdown-item kt-font-bolder kt-font-success" href="#"><i class="la la-edit kt-font-success"></i> Ubah</a>'.
+                        '<a class="dropdown-item kt-font-bolder kt-font-success" href="'.route('room.edit', $room->id).'"><i class="la la-edit kt-font-success"></i> Ubah</a>'.
                     '</form>'.
                     '</div>'.
                 '</span>'.
@@ -67,14 +67,14 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|max:255',
             'floor' => 'required|integer|max:5',
         ]);
 
-        Room::create($validatedData);
+        Room::create($request->all());
 
-        return redirect()->route('room.index')->with('success', 'Data Ruangan berhasil ditambahkan.');
+        return redirect()->route('room.index')->with('success', 'Data Ruangan berhasil ditambah.');
     }
 
     /**
@@ -94,9 +94,9 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Room $room)
     {
-        return view('admin.room.edit');
+        return view('admin.room.edit', compact('room'));
     }
 
     /**
@@ -106,9 +106,16 @@ class RoomController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Room $room)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:255',
+            'floor' => 'required|integer|max:5',
+        ]);
+
+        $room->update($request->all());
+
+        return redirect()->route('room.index')->with('success', 'Data Ruangan berhasil diubah.');
     }
 
     /**
