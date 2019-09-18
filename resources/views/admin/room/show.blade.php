@@ -15,7 +15,6 @@
 {{-- Breadcrumb --}}
 @section('breadcrumbGroup', 'Perkuliahan')
 
-@section('breadcrumbCategoryUrl', 'room')
 @section('breadcrumbCategoryName', 'Ruangan')
 
 @section('breadcrumbPageUrl', '')
