@@ -5,7 +5,6 @@
 {{-- Style for this page --}}
 @section('style')
 <link rel="stylesheet" href="{{ asset('vendors/custom/datatables/datatables.bundle.min.css') }}">
-<link rel="stylesheet" href="{{ asset('vendors/general/sweetalert2/dist/sweetalert2.min.css') }}">
 @endsection
 
 {{-- Top JS for this Page --}}
@@ -29,7 +28,7 @@
 {{-- Success Notification --}}
 <div class="alert alert-light alert-elevate" role="alert">
   <div class="alert-icon"><i class="la la-check-circle kt-font-success"></i></div>
-  <div class="alert-text">{{$message}}</div>
+  <div class="alert-text kt-font-success kt-font-bolder">{{$message}}</div>
   <div class="alert-close">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true"><i class="la la-close"></i></span>
@@ -79,7 +78,6 @@
 {{-- Bottom JS for this Page --}}
 @section('bottomjs')
 <script src="{{ asset('vendors/custom/datatables/datatables.bundle.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('vendors/general/sweetalert2/dist/sweetalert2.all.min.js') }}" type="text/javascript"></script>
 <script type="text/javascript">
   $(document).ready(function () {
     $('#table').DataTable({
