@@ -24,19 +24,6 @@
 {{-- Main Content --}}
 @section('content')
 
-@if (session()->get('success'))
-{{-- Success Notification --}}
-<div class="alert alert-light alert-elevate" role="alert">
-  <div class="alert-icon"><i class="la la-check-circle kt-font-success"></i></div>
-  <div class="alert-text">A simple dark alert—check it out!</div>
-  <div class="alert-close">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true"><i class="la la-close"></i></span>
-    </button>
-  </div>
-</div>
-@endif
-
 <div class="kt-portlet kt-portlet--mobile">
   <div class="kt-portlet__head kt-portlet__head--lg">
     <div class="kt-portlet__head-label">
