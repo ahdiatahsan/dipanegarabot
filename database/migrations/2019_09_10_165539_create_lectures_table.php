@@ -19,6 +19,7 @@ class CreateLecturesTable extends Migration
             $table->unsignedInteger('lecture_hour_id');
             $table->unsignedInteger('lecturer_id');
             $table->unsignedInteger('course_id');
+            $table->unsignedInteger('status');
             $table->timestamps();
 
             $table->foreign('room_id')->references('id')->on('rooms');

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lecture extends Model
 {
     protected $fillable = [
-        'room_id', 'lecture_hour_id', 'lecturer_id', 'course_id',
+        'room_id', 'lecture_hour_id', 'lecturer_id', 'course_id', 'status',
     ];
 
     public function room()
@@ -24,7 +24,7 @@ class Lecture extends Model
     {
         return $this->belongsTo('App\Lecturer');
     }
-    
+
     public function course()
     {
         return $this->belongsTo('App\Course');
