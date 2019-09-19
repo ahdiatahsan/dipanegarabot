@@ -35,3 +35,6 @@ Route::any('getCourse', 'CourseController@getData')->name('course.getData');
 
 Route::resource('lecturer', 'LecturerController');
 Route::any('getLecturer', 'LecturerController@getData')->name('lecturer.getData');
+
+Route::resource('lecture', 'LectureController');
+Route::any('getLecture', 'LectureController@getData')->name('lecture.getData');
