@@ -29,3 +29,9 @@ Route::any('getRoom', 'RoomController@getData')->name('room.getData');
 
 Route::resource('lectureHour', 'LectureHourController');
 Route::any('getLectureHour', 'LectureHourController@getData')->name('lectureHour.getData');
+
+Route::resource('course', 'CourseController');
+Route::any('getCourse', 'CourseController@getData')->name('course.getData');
+
+Route::resource('lecturer', 'LecturerController');
+Route::any('getLecturer', 'LecturerController@getData')->name('lecturer.getData');
