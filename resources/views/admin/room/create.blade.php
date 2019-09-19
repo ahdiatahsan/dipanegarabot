@@ -81,6 +81,14 @@
             </select>
           </div>
 
+          <div class="form-group">
+            <label>Gedung</label>
+            <select class="custom-select select2 select2-container" name="building" id="building">
+              <option value="A">Gedung A</option>
+              <option value="B">Gendung B</option>
+            </select>
+          </div>
+
         </div>
       </div>
 

@@ -64,6 +64,7 @@
                 <th class="sorting kt-font-primary kt-font-bolder" style="width: 20px">No.</th>
                 <th class="sorting kt-font-primary kt-font-bolder">Nama Ruangan</th>
                 <th class="sorting kt-font-primary kt-font-bolder">Lantai</th>
+                <th class="sorting kt-font-primary kt-font-bolder">Gedung</th>
                 <th class="sorting_disabled kt-font-primary kt-font-bolder kt-align-center" style="min-width: 80px">Tindakan</th>
               </tr>
             </thead>
@@ -89,6 +90,7 @@
         { data: 'DT_RowIndex', name: 'DT_RowIndex' },
         { data: 'name', name: 'name' },
         { data: 'floor', name: 'floor' },
+        { data: 'building', name: 'building' },
         { data: 'action', name: 'action', orderable: false, searchable: false },
       ]
     });

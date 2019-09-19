@@ -82,6 +82,14 @@
             </select>
           </div>
 
+          <div class="form-group">
+            <label>Gedung</label>
+            <select class="custom-select select2 select2-container" name="building" id="building">
+              <option value="A" {{ ($room->building == 'A') ? 'selected' : '' }}>Gedung A</option>
+              <option value="B" {{ ($room->building == 'B') ? 'selected' : '' }}>Gedung B</option>
+            </select>
+          </div>
+
         </div>
       </div>
 

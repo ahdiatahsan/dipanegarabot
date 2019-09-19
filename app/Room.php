@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     protected $fillable = [
-        'name', 'floor',
+        'name', 'floor', 'building'
     ];
 
     public function lecture()

@@ -47,9 +47,15 @@
           <label>Nama Ruangan</label>
           <input class="form-control" value="{{$room->name}}" readonly>
         </div>
+
         <div class="form-group">
           <label>Lantai</label>
           <input class="form-control" value="{{$room->floor}}" readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Gedung</label>
+          <input class="form-control" value="{{$room->building}}" readonly>
         </div>
       </div>
     </div>

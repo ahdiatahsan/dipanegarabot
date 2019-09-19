@@ -70,6 +70,7 @@ class RoomController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'floor' => 'required|integer|max:5',
+            'building' => 'required|max:2',
         ]);
 
         Room::create($request->all());
@@ -111,6 +112,7 @@ class RoomController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'floor' => 'required|integer|max:5',
+            'building' => 'required|max:1',
         ]);
 
         $room->update($request->all());

@@ -17,6 +17,7 @@ class CreateRoomsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->unsignedTinyInteger('floor');
+            $table->string('building');
             $table->timestamps();
         });
     }
