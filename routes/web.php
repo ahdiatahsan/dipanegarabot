@@ -38,3 +38,6 @@ Route::any('getLecturer', 'LecturerController@getData')->name('lecturer.getData'
 
 Route::resource('lecture', 'LectureController');
 Route::any('getLecture', 'LectureController@getData')->name('lecture.getData');
+
+Route::resource('role', 'RoleController');
+Route::any('getRole', 'RoleController@getData')->name('role.getData');
