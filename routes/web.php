@@ -44,3 +44,6 @@ Route::any('getRole', 'RoleController@getData')->name('role.getData');
 
 Route::resource('user', 'UserController');
 Route::any('getUser', 'UserController@getData')->name('user.getData');
+
+Route::resource('informationCategory', 'InformationCategoryController');
+Route::any('getInformationCategory', 'InformationCategoryController@getData')->name('informationCategory.getData');
