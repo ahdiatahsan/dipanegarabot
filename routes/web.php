@@ -47,3 +47,6 @@ Route::any('getUser', 'UserController@getData')->name('user.getData');
 
 Route::resource('informationCategory', 'InformationCategoryController');
 Route::any('getInformationCategory', 'InformationCategoryController@getData')->name('informationCategory.getData');
+
+Route::resource('file', 'FileController');
+Route::any('getFile', 'FileController@getData')->name('file.getData');
