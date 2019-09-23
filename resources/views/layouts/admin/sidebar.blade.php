@@ -4,7 +4,7 @@
     <ul class="kt-menu__nav ">
 
       {{-- Dashboard --}}
-      <li class="kt-menu__item " aria-haspopup="true"><a href="demo1/index.html" class="kt-menu__link ">
+      <li class="kt-menu__item " aria-haspopup="true"><a href="/dashboard" class="kt-menu__link ">
         <i class="kt-menu__link-icon flaticon2-dashboard"></i>
         <span class="kt-menu__link-text">Dashboard</span></a>
       </li>
@@ -14,7 +14,7 @@
         <h4 class="kt-menu__section-text">Informasi Umum</h4>
       </li>
 
-      <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+      <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('information*') || request()->is('informationCategory*')) {{ 'kt-menu__item--open' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
         <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
           <i class="kt-menu__link-icon flaticon2-information"></i>
           <span class="kt-menu__link-text">Daftar Informasi</span>
@@ -25,8 +25,8 @@
           <span class="kt-menu__arrow"></span>
           <ul class="kt-menu__subnav">
 
-            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-              <a href="#" class="kt-menu__link kt-menu__toggle">
+            <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('information') || request()->is('information/*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+              <a href="/information" class="kt-menu__link kt-menu__toggle">
                 <i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
                 <span class="kt-menu__link-text">Informasi</span>
                 <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -34,8 +34,8 @@
               <div><span class="kt-menu__arrow"></span></div>
             </li>
 
-            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-              <a href="#" class="kt-menu__link kt-menu__toggle">
+            <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('informationCategory*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+              <a href="/informationCategory" class="kt-menu__link kt-menu__toggle">
                 <i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
                 <span class="kt-menu__link-text">Kategori Informasi</span>
                 <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -46,8 +46,8 @@
         </div>
       </li>
 
-      <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-        <a href="#" class="kt-menu__link">
+      <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('file*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+        <a href="/file" class="kt-menu__link">
           <i class="kt-menu__link-icon flaticon2-file-1"></i>
           <span class="kt-menu__link-text">File</span>
           <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -60,7 +60,7 @@
         <h4 class="kt-menu__section-text">Perkuliahan</h4>
       </li>
 
-      <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+      <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('lecture') || request()->is('lecture/*') || request()->is('course*') || request()->is('lectureHour*')) {{ 'kt-menu__item--open' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
         <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
           <i class="kt-menu__link-icon flaticon2-schedule"></i>
           <span class="kt-menu__link-text">Daftar Perkuliahan</span>
@@ -71,8 +71,8 @@
           <span class="kt-menu__arrow"></span>
           <ul class="kt-menu__subnav">
 
-            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-              <a href="#" class="kt-menu__link kt-menu__toggle">
+            <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('lecture') || request()->is('lecture/*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+              <a href="/lecture" class="kt-menu__link kt-menu__toggle">
                 <i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
                 <span class="kt-menu__link-text">Perkuliahan</span>
                 <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -80,8 +80,8 @@
               <div><span class="kt-menu__arrow"></span></div>
             </li>
 
-            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-              <a href="#" class="kt-menu__link kt-menu__toggle">
+            <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('course*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+              <a href="/course" class="kt-menu__link kt-menu__toggle">
                 <i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
                 <span class="kt-menu__link-text">Mata Kuliah</span>
                 <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -89,8 +89,8 @@
               <div><span class="kt-menu__arrow"></span></div>
             </li>
 
-            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-              <a href="#" class="kt-menu__link kt-menu__toggle">
+            <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('lectureHour*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+              <a href="/lectureHour" class="kt-menu__link kt-menu__toggle">
                 <i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
                 <span class="kt-menu__link-text">Jam Kuliah</span>
                 <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -101,16 +101,16 @@
         </div>
       </li>
 
-      <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-        <a href="#" class="kt-menu__link">
+      <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('lecturer*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+        <a href="/lecturer" class="kt-menu__link">
           <i class="kt-menu__link-icon flaticon2-group"></i>
           <span class="kt-menu__link-text">Dosen</span>
           <i class="kt-menu__ver-arrow la la-angle-right"></i>
         </a>
       </li>
 
-      <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-        <a href="#" class="kt-menu__link">
+      <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('room*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+        <a href="/room" class="kt-menu__link">
           <i class="kt-menu__link-icon flaticon2-shelter"></i>
           <span class="kt-menu__link-text">Ruangan</span>
           <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -124,7 +124,7 @@
         <i class="kt-menu__section-icon flaticon-more-v2"></i>
       </li>
 
-      <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+      <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('user*') || request()->is('role*')) {{ 'kt-menu__item--open' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
         <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
           <i class="kt-menu__link-icon flaticon2-user-1"></i>
           <span class="kt-menu__link-text">Daftar User</span>
@@ -135,8 +135,8 @@
           <span class="kt-menu__arrow"></span>
           <ul class="kt-menu__subnav">
 
-            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-              <a href="#" class="kt-menu__link kt-menu__toggle">
+            <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('user*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+              <a href="/user" class="kt-menu__link kt-menu__toggle">
                 <i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
                 <span class="kt-menu__link-text">User</span>
                 <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -144,8 +144,8 @@
               <div><span class="kt-menu__arrow"></span></div>
             </li>
 
-            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-              <a href="#" class="kt-menu__link kt-menu__toggle">
+            <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('role*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+              <a href="/role" class="kt-menu__link kt-menu__toggle">
                 <i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
                 <span class="kt-menu__link-text">Role</span>
                 <i class="kt-menu__ver-arrow la la-angle-right"></i>
