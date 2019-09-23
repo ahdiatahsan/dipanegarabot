@@ -3,7 +3,8 @@
 
 @include('layouts.admin.head')
 
-<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+<body
+  class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
   <!-- begin:: Header Mobile -->
   <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
@@ -13,9 +14,11 @@
       </a>
     </div>
     <div class="kt-header-mobile__toolbar">
-      <button class="kt-header-mobile__toggler kt-header-mobile__toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
+      <button class="kt-header-mobile__toggler kt-header-mobile__toggler--left"
+        id="kt_aside_mobile_toggler"><span></span></button>
       <button class="kt-header-mobile__toggler" id="kt_header_mobile_toggler"><span></span></button>
-      <button class="kt-header-mobile__topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
+      <button class="kt-header-mobile__topbar-toggler" id="kt_header_mobile_topbar_toggler"><i
+          class="flaticon-more"></i></button>
     </div>
   </div>
 
@@ -81,18 +84,38 @@
         <!-- begin:: Header -->
         <div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed ">
           <!-- begin:: Header Menu -->
-          <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+          <button class="kt-header-menu-wrapper-close" id="kt_header_menu_mobile_close_btn"><i
+              class="la la-close"></i></button>
           <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
             <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
               <ul class="kt-menu__nav ">
-                <li class="kt-menu__item kt-menu__item--open kt-menu__item--here kt-menu__item--submenu kt-menu__item--rel">
-
-                  <a href="#" class="kt-menu__link kt-menu__toggle">
-                    <span class="kt-menu__link-text">dipanegara.ac.id</span>
-                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                  </a>
-
+                <li
+                  class="kt-menu__item kt-menu__item--open kt-menu__item--here kt-menu__item--submenu kt-menu__item--rel">
+                  <span class="kt-menu__link">
+                    <span class="kt-menu__link-text kt-font-bolder">
+                      <a href="https://www.dipanegara.ac.id/" target="_blank">Dipanegara Homepage</a>
+                    </span>
+                  </span>
                 </li>
+
+                <li
+                  class="kt-menu__item kt-menu__item--open kt-menu__item--here kt-menu__item--submenu kt-menu__item--rel">
+                  <span class="kt-menu__link">
+                    <span class="kt-menu__link-text kt-font-bolder">
+                      <a href="https://siaka.dipanegara.ac.id/" target="_blank">Siaka</a>
+                    </span>
+                  </span>
+                </li>
+
+                <li
+                class="kt-menu__item kt-menu__item--open kt-menu__item--here kt-menu__item--submenu kt-menu__item--rel">
+                <span class="kt-menu__link">
+                  <span class="kt-menu__link-text kt-font-bolder">
+                    <a href="https://ejurnal.dipanegara.ac.id/" target="_blank">Ejurnal</a>
+                  </span>
+                </span>
+              </li>
+
               </ul>
             </div>
           </div>
@@ -105,37 +128,35 @@
             <div class="kt-header__topbar-item kt-header__topbar-item--user">
               <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
                 <div class="kt-header__topbar-user">
-                  <span class="kt-header__topbar-welcome kt-hidden-mobile">Hai,</span>
-                  <span class="kt-header__topbar-username kt-hidden-mobile">Sean</span>
-                  {{-- <img class="kt-hidden" alt="Pic" src="./assets/media/users/300_25.jpg" /> --}}
+                  <span class="kt-header__topbar-username kt-hidden-mobile kt-font-bolder">{{Auth::user()->name}}</span>
 
                   <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-                  <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold">S</span>
+                  <span
+                    class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold"><i class="flaticon2-user"></i></span>
                 </div>
               </div>
-              <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
+              <div
+                class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl">
 
                 <!--begin: Head -->
                 <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x"
                   style="background-image: url({{ asset('media/menu.svg') }})">
                   <div class="kt-user-card__avatar">
-                    {{-- <img class="kt-hidden" alt="Pic" src="./assets/media/users/300_25.jpg" /> --}}
-
                     <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-                    <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success">S</span>
+                    <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success"><i class="flaticon2-user"></i></span>
                   </div>
                   <div class="kt-user-card__name">
-                    Sean Stone
+                    {{Auth::user()->name}}
                   </div>
                   <div class="kt-user-card__badge">
-                    <span class="btn btn-dark btn-sm btn-bold btn-font-md">Administrator</span>
+                    <span class="btn btn-dark btn-sm btn-bold btn-font-md">{{Auth::user()->role->name}}</span>
                   </div>
                 </div>
                 <!--end: Head -->
 
                 <!--begin: Navigation -->
                 <div class="kt-notification">
-                  <a href="#" class="kt-notification__item">
+                  {{-- <a href="#" class="kt-notification__item">
                     <div class="kt-notification__item-icon">
                       <i class="flaticon2-calendar-3 kt-font-success"></i>
                     </div>
@@ -147,9 +168,12 @@
                         Account settings and more
                       </div>
                     </div>
-                  </a>
+                  </a> --}}
                   <div class="kt-notification__custom kt-space-between">
-                    <a href="demo1/custom/user/login-v2.html" target="_blank" class="btn btn-label btn-label-brand btn-sm btn-bold">Sign Out</a>
+                    <a href="{{ route('logout') }}" class="btn btn-danger btn-bolder" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign Out</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                   </div>
                 </div>
 
