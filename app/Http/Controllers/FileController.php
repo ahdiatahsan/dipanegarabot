@@ -70,7 +70,7 @@ class FileController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
-            'filename' => 'required|file|max:1000|mimes:jpeg,jpg,png,pdf,doc,docx,odt,xls,xlsx,ppt,pptx,txt',
+            'filename' => 'required|file|max:1000|mimes:jpeg,jpg,png,pdf,doc,docx,odt,xls,xlsx,ppt,pptx',
         ]);
 
         $file = $request->file('filename');
