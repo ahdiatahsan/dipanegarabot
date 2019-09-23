@@ -22,10 +22,10 @@ class CreateLecturesTable extends Migration
             $table->unsignedInteger('status');
             $table->timestamps();
 
-            $table->foreign('room_id')->references('id')->on('rooms');
-            $table->foreign('lecture_hour_id')->references('id')->on('lecture_hours');
-            $table->foreign('lecturer_id')->references('id')->on('lecturers');
-            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
+            $table->foreign('lecture_hour_id')->references('id')->on('lecture_hours')->onDelete('cascade');
+            $table->foreign('lecturer_id')->references('id')->on('lecturers')->onDelete('cascade');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
         });
     }
 

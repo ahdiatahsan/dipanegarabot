@@ -16,13 +16,13 @@ class CreateInformationTable extends Migration
         Schema::create('information', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('body');
+            $table->text('body');
             $table->unsignedInteger('information_category_id');
-            $table->unsignedInteger('file_id');
+            $table->unsignedInteger('file_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('information_category_id')->references('id')->on('information_categories');
-            $table->foreign('file_id')->references('id')->on('files');
+            $table->foreign('information_category_id')->references('id')->on('information_categories')->onDelete('cascade');
+            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
         });
     }
 
