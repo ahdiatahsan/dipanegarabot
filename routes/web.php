@@ -50,3 +50,6 @@ Route::any('getInformationCategory', 'InformationCategoryController@getData')->n
 
 Route::resource('file', 'FileController');
 Route::any('getFile', 'FileController@getData')->name('file.getData');
+
+Route::resource('information', 'InformationController');
+Route::any('getInformation', 'InformationController@getData')->name('information.getData');
