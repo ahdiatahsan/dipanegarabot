@@ -21,6 +21,7 @@ class LectureController extends Controller
                 ->join('lecture_hours', 'lectures.lecture_hour_id', '=', 'lecture_hours.id')
                 ->join('lecturers', 'lectures.lecturer_id', '=', 'lecturers.id')
                 ->join('courses', 'lectures.course_id', '=', 'courses.id')
+                ->where('lecturers.status', '=', 'H')
                 ->select([
                     'courses.name as courses',
                     'lecture_hours.time',
