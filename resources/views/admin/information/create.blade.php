@@ -84,16 +84,6 @@
             <textarea class="form-control" name="body" id="body" rows="10"></textarea>
           </div>
 
-          <div class="form-group">
-            <label>File</label>
-            <select class="custom-select select2 select2-container" name="file_id" id="file_id">
-              <option value="">-</option>
-              @foreach ($files as $file)
-              <option value="{{ $file->id }}">{{ $file->title }}</option>
-              @endforeach
-            </select>
-          </div>
-
         </div>
       </div>
 

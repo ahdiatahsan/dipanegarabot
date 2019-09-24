@@ -59,42 +59,6 @@
           <textarea class="form-control" rows="10" readonly>{{ $information->body }}</textarea>
         </div>
 
-        @isset($information->file_id)
-          @if ($information->file->filetype == 'jpeg' || $information->file->filetype == 'jpg' || $information->file->filetype == 'png')
-            <div class="col-xl-12 d-flex justify-content-center">
-              <div class="card" style="max-width: 600px">
-                <img class="card-img-top" src="{{ Storage::url($information->file->filename) }}" alt="Card image cap">
-                <div class="card-body text-center">
-                  <a class="btn btn-danger" href="{{ Storage::url($information->file->filename) }}" target="_blank"><i
-                      class="flaticon2-image-file"></i> Lihat Gambar</a>
-                </div>
-              </div>
-            </div>
-          @else
-          <div class="text-center">
-            <a class="btn btn-danger btn-lg" href="{{ Storage::url($information->file->filename) }}" target="_blank"><i
-                  class="flaticon2-file"></i> Lihat File</a>
-          </div>
-          @endif
-        @endisset
-        {{-- @if ($information->file_id == null)
-
-        @elseif($information->filetype == 'jpeg' || $information->filetype == 'jpg' || $information->filetype == 'png')
-
-        <div class="col-xl-12 d-flex justify-content-center">
-          <div class="card" style="max-width: 600px">
-            <img class="card-img-top" src="{{ Storage::url($information->file->filename) }}" alt="Card image cap">
-            <div class="card-body text-center">
-              <a class="btn btn-danger" href="{{ Storage::url($information->file->filename) }}" target="_blank"><i
-                  class="flaticon2-image-file"></i> Lihat Gambar</a>
-            </div>
-          </div>
-        </div>
-
-        @else
-
-        @endif --}}
-
       </div>
     </div>
     {{-- End::Content --}}

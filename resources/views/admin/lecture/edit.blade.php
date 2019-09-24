@@ -71,7 +71,7 @@
               <label>Nama Ruangan</label>
               <select class="custom-select select2 select2-container" name="room_id" id="room_id">
                 @foreach ($rooms as $room)
-                <option value="{{ $room->id }}" {{ ($room->name == $room->name) ? 'selected' : '' }}>{{ $room->name }}</option>
+                <option value="{{ $room->id }}" {{ ($lecture->room_id == $room->id) ? 'selected' : '' }}>{{ $room->name }}</option>
                 @endforeach
               </select>
             </div>
@@ -80,7 +80,7 @@
               <label>Jam Kuliah</label>
               <select class="custom-select select2 select2-container" name="lecture_hour_id" id="lecture_hour_id">
                 @foreach ($lectureHours as $lectureHour)
-                <option value="{{ $lectureHour->id }}" {{ ($lectureHour->time == $lectureHour->time) ? 'selected' : '' }}>{{ $lectureHour->time }}</option>
+                <option value="{{ $lectureHour->id }}" {{ ($lecture->lecture_hour_id == $lectureHour->id) ? 'selected' : '' }}>{{ $lectureHour->time }}</option>
                 @endforeach
               </select>
             </div>
@@ -89,7 +89,7 @@
               <label>Dosen</label>
               <select class="custom-select select2 select2-container" name="lecturer_id" id="lecturer_id">
                 @foreach ($lecturers as $lecturer)
-                <option value="{{ $lecturer->id }}" {{ ($lecturer->name == $lecturer->name) ? 'selected' : '' }}>{{ $lecturer->name }}</option>
+                <option value="{{ $lecturer->id }}" {{ ($lecture->lecturer_id == $lecturer->id) ? 'selected' : '' }}>{{ $lecturer->name }}</option>
                 @endforeach
               </select>
             </div>
@@ -98,7 +98,7 @@
               <label>Mata Kuliah</label>
               <select class="custom-select select2 select2-container" name="course_id" id="course_id">
                 @foreach ($courses as $course)
-                <option value="{{ $course->id }}" {{ ($course->name == $course->name) ? 'selected' : '' }}>{{ $course->name }}</option>
+                <option value="{{ $course->id }}" {{ ($lecture->course_id == $course->id) ? 'selected' : '' }}>{{ $course->name }}</option>
                 @endforeach
               </select>
             </div>
