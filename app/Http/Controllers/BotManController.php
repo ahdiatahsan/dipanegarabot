@@ -35,12 +35,11 @@ class BotManController extends Controller
                 $status = "Tidak Hadir";
             }
 
-            $bot->reply(
-            "Nama Dosen : ". $lecturer->name.
-            "\nNIDN : ". $lecturer->nidn.
-            "\nPendidikan Tertinggi : ". $lecturer->degree.
-            "\nKehadiran : ". $status
-            );
+            $bot->reply(<<<EOT
+            Nama Dosen : $lecturer->name
+            Pendidikan Tertinggi : $lecturer->degree
+            Kehadiran : $status
+            EOT);
         });
 
         //Perintah Mata Kuliah
@@ -127,7 +126,6 @@ class BotManController extends Controller
                 EOT
             );
         });
-
 
         //Fallback Error
         $botman->fallback(function($bot) {
