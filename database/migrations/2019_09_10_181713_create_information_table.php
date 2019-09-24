@@ -22,7 +22,6 @@ class CreateInformationTable extends Migration
             $table->timestamps();
 
             $table->foreign('information_category_id')->references('id')->on('information_categories')->onDelete('cascade');
-            $table->foreign('file_id')->references('id')->on('files')->onDelete('cascade');
         });
     }
 
@@ -35,7 +34,6 @@ class CreateInformationTable extends Migration
     {
         Schema::dropIfExists('information', function (Blueprint $table) {
             $table->dropForeign('information_category_id');
-            $table->dropForeign('file_id');
         });
     }
 }
