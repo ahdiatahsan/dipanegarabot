@@ -16,6 +16,7 @@ Route::get('/', function(){
 })->middleware('guest');
 Auth::routes();
 Auth::routes([ 'register' => false ]);
+Route::get('/botman/tinker', 'BotManController@tinker');
 Route::any('getCourse', 'CourseController@getData')->name('course.getData');
 Route::any('getFile', 'FileController@getData')->name('file.getData');
 Route::any('getInformation', 'InformationController@getData')->name('information.getData');
