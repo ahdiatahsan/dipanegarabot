@@ -70,8 +70,8 @@ class LecturerController extends Controller
             'nidn' => 'required|max:255',
             'name' => 'required|max:255',
             'gender' => 'required|max:1',
-            'degree' => 'required|max:4'
-
+            'degree' => 'required|max:4',
+            'status' => 'required|max:2'
         ]);
 
         Lecturer::create($request->all());
@@ -114,7 +114,8 @@ class LecturerController extends Controller
             'nidn' => 'required|max:255',
             'name' => 'required|max:255',
             'gender' => 'required|max:1',
-            'degree' => 'required|max:4'
+            'degree' => 'required|max:4',
+            'status' => 'required|max:2',
         ]);
 
         $lecturer->update($request->all());

@@ -93,6 +93,15 @@
               <option value="S3" {{ ($lecturer->degree == 'S3') ? 'selected' : '' }}>S3 - Doktor</option>
             </select>
           </div>
+
+          <div class="form-group">
+            <label>Kehadiran</label>
+            <select class="custom-select select2 select2-container" name="status" id="status">
+              <option value="H" {{ ($lecturer->status == 'H') ? 'selected' : '' }}>Hadir</option>
+              <option value="A" {{ ($lecturer->status == 'A') ? 'selected' : '' }}>Tidak Hadir</option>
+            </select>
+          </div>
+
         </div>
       </div>
 

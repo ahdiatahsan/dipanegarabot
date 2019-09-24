@@ -92,6 +92,14 @@
             </select>
           </div>
 
+          <div class="form-group">
+            <label>Kehadiran</label>
+            <select class="custom-select select2 select2-container" name="status" id="status">
+              <option value="H">Hadir</option>
+              <option value="A">Tidak Hadir</option>
+            </select>
+          </div>
+
         </div>
       </div>
 

@@ -19,6 +19,7 @@ class CreateLecturersTable extends Migration
             $table->string('name');
             $table->string('gender');
             $table->string('degree');
+            $table->string('status');
             $table->timestamps();
         });
     }

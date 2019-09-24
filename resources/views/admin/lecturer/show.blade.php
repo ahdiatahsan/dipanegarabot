@@ -62,6 +62,11 @@
           <label>Pendidikan Tertinggi</label>
           <input class="form-control" value="{{$lecturer->degree}}" readonly>
         </div>
+
+        <div class="form-group">
+          <label>Kehadiran</label>
+          <input class="form-control" value="{{ ($lecturer->status == 'A') ? 'Tidak Hadir' : 'Hadir' }}" readonly>
+        </div>
       </div>
     </div>
     {{-- End::Content --}}
