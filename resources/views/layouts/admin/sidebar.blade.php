@@ -4,12 +4,13 @@
     <ul class="kt-menu__nav ">
 
       {{-- Dashboard --}}
-      <li class="kt-menu__item " aria-haspopup="true"><a href="/dashboard" class="kt-menu__link ">
+      <li class="kt-menu__item @if(request()->is('dashboard')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true"><a href="/dashboard" class="kt-menu__link ">
         <i class="kt-menu__link-icon flaticon2-dashboard"></i>
         <span class="kt-menu__link-text">Dashboard</span></a>
       </li>
 
-      {{-- Informasi Umum --}}
+      @if (Auth::check() && Auth::user()->role_id == 2 || Auth::user()->role_id == 1)
+        {{-- Informasi Umum --}}
       <li class="kt-menu__section ">
         <h4 class="kt-menu__section-text">Informasi Umum</h4>
       </li>
@@ -54,6 +55,7 @@
         </a>
       </li>
       {{-- End::Informasi Umum --}}
+      @endif
 
       {{-- Begin::Perkuliahan --}}
       <li class="kt-menu__section ">
@@ -79,7 +81,7 @@
               </a>
               <div><span class="kt-menu__arrow"></span></div>
             </li>
-
+            @if (Auth::check() && Auth::user()->role_id == 2 || Auth::user()->role_id == 1)
             <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('course*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
               <a href="/course" class="kt-menu__link kt-menu__toggle">
                 <i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
@@ -97,6 +99,7 @@
               </a>
               <div><span class="kt-menu__arrow"></span></div>
             </li>
+            @endif
           </ul>
         </div>
       </li>
@@ -109,6 +112,7 @@
         </a>
       </li>
 
+      @if (Auth::check() && Auth::user()->role_id == 2 || Auth::user()->role_id == 1)
       <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('room*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
         <a href="/room" class="kt-menu__link">
           <i class="kt-menu__link-icon flaticon2-shelter"></i>
@@ -116,8 +120,10 @@
           <i class="kt-menu__ver-arrow la la-angle-right"></i>
         </a>
       </li>
+      @endif
       {{-- End::Perkuliahan --}}
 
+      @if (Auth::check() && Auth::user()->role_id == 1)
       {{-- Begin::User --}}
       <li class="kt-menu__section ">
         <h4 class="kt-menu__section-text">Akun</h4>
@@ -156,6 +162,7 @@
         </div>
       </li>
       {{-- End::User --}}
+      @endif
     </ul>
   </div>
 </div>
