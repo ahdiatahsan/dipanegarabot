@@ -13,7 +13,7 @@
 
 Route::get('/', function(){
     return view('auth.login');
-});
+})->middleware('guest');
 Auth::routes();
 Auth::routes([ 'register' => false ]);
 Route::any('getCourse', 'CourseController@getData')->name('course.getData');
@@ -29,12 +29,12 @@ Route::any('getUser', 'UserController@getData')->name('user.getData');
 Route::get('/botman/tinker', 'BotManController@tinker');
 Route::match(['get', 'post'], '/botman', 'BotManController@handle');
 
-Route::group(['middleware' => ['superAdmin']], function () {
+Route::group(['middleware' => ['auth','superAdmin']], function () {
     Route::resource('role', 'RoleController');
     Route::resource('user', 'UserController');
 });
 
-Route::group(['middleware' => ['admin']], function () {
+Route::group(['middleware' => ['auth','admin']], function () {
     Route::resource('course', 'CourseController');
     Route::resource('file', 'FileController');
     Route::resource('information', 'InformationController');
