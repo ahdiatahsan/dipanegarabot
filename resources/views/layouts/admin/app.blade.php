@@ -128,7 +128,7 @@
             <div class="kt-header__topbar-item kt-header__topbar-item--user">
               <div class="kt-header__topbar-wrapper" data-toggle="dropdown" data-offset="0px,0px">
                 <div class="kt-header__topbar-user">
-                  <span class="kt-header__topbar-username kt-hidden-mobile kt-font-bolder">{{Auth::user()->name}}</span>
+                  <span class="kt-header__topbar-username kt-hidden-mobile kt-font-bolder">@if (Auth::check()) {{Auth::user()->name}} @endif</span>
 
                   <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
                   <span
@@ -146,10 +146,10 @@
                     <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success"><i class="flaticon2-user"></i></span>
                   </div>
                   <div class="kt-user-card__name">
-                    {{Auth::user()->name}}
+                    @if (Auth::check()) {{Auth::user()->name}} @endif
                   </div>
                   <div class="kt-user-card__badge">
-                    <span class="btn btn-dark btn-sm btn-bold btn-font-md">{{Auth::user()->role->name}}</span>
+                    <span class="btn btn-dark btn-sm btn-bold btn-font-md">@if (Auth::check()) {{Auth::user()->role->name}} @endif</span>
                   </div>
                 </div>
                 <!--end: Head -->
