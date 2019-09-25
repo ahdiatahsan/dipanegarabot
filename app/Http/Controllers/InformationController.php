@@ -7,6 +7,7 @@ use App\Information;
 use App\InformationCategory;
 use Datatables;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class InformationController extends Controller
@@ -26,26 +27,36 @@ class InformationController extends Controller
         ->addIndexColumn()
         ->setRowId('information.id')
         ->addColumn('action', function($information){
-            $actions =
-            '<div class="kt-align-center">'.
-                '<span class="dropdown" title="Pilihan">'.
-                    '<a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="false">'.
-                    '<i class="flaticon2-menu-4"></i>'.
+            if (Auth::check() && Auth::user()->role_id == 2 || Auth::user()->role_id == 1) {
+                $actions =
+                '<div class="kt-align-center">'.
+                    '<span class="dropdown" title="Pilihan">'.
+                        '<a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="false">'.
+                        '<i class="flaticon2-menu-4"></i>'.
+                        '</a>'.
+                        '<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-32px, 27px, 0px);">'.
+                        '<form action="'.route('information.destroy', $information->id).'" method="POST">'.
+                            '<input type="hidden" name="_token" value="'.csrf_token().'">'.
+                            '<input type="hidden" name="_method" value="DELETE">'.
+                            '<button type="submit" class="dropdown-item kt-font-bolder kt-font-danger" OnClick="return confirm(\'Hapus data ini ?\')"><i class="la la-remove kt-font-danger"></i> Hapus</button>'.
+                            '<a class="dropdown-item kt-font-bolder kt-font-success" href="'.route('information.edit', $information->id).'"><i class="la la-edit kt-font-success"></i> Ubah</a>'.
+                        '</form>'.
+                        '</div>'.
+                    '</span>'.
+                    '<a href="'. route('information.show', $information->id) .'" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Lihat Detail">'.
+                        '<i class="flaticon2-search"></i>'.
                     '</a>'.
-                    '<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-32px, 27px, 0px);">'.
-                    '<form action="'.route('information.destroy', $information->id).'" method="POST">'.
-                        '<input type="hidden" name="_token" value="'.csrf_token().'">'.
-                        '<input type="hidden" name="_method" value="DELETE">'.
-                        '<button type="submit" class="dropdown-item kt-font-bolder kt-font-danger" OnClick="return confirm(\'Hapus data ini ?\')"><i class="la la-remove kt-font-danger"></i> Hapus</button>'.
-                        '<a class="dropdown-item kt-font-bolder kt-font-success" href="'.route('information.edit', $information->id).'"><i class="la la-edit kt-font-success"></i> Ubah</a>'.
-                    '</form>'.
-                    '</div>'.
-                '</span>'.
-                '<a href="'. route('information.show', $information->id) .'" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Lihat Detail">'.
-                    '<i class="flaticon2-search"></i>'.
-                '</a>'.
-            '</div>';
-            return $actions;
+                '</div>';
+                return $actions;
+            }else{
+                $actions =
+                '<div class="kt-align-center">'.
+                    '<a href="'. route('information.show', $information->id) .'" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Lihat Detail">'.
+                        '<i class="flaticon2-search"></i>'.
+                    '</a>'.
+                '</div>';
+                return $actions;
+            }
         })
         ->rawColumns(['action'])
         ->make(true);
