@@ -99,7 +99,7 @@ class LectureController extends Controller
     {
         $courses = Course::all();
         $lectureHours = LectureHour::all();
-        $lecturers = Lecturer::all();
+        $lecturers = Lecturer::all()->where('status', '=', 'H');
         $lectures = Lecture::all();
         $rooms = Room::all();
 
@@ -148,7 +148,7 @@ class LectureController extends Controller
     {
         $courses = Course::all();
         $lectureHours = LectureHour::all();
-        $lecturers = Lecturer::all();
+        $lecturers = Lecturer::all()->where('status', '=', 'H');
         $lectures = Lecture::all();
         $rooms = Room::all();
 
