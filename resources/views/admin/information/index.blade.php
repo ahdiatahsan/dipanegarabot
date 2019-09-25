@@ -49,7 +49,9 @@
     </div>
     <div class="kt-portlet__head-toolbar">
       <div class="kt-portlet__head-wrapper">
+          @if (Auth::check() && Auth::user()->role_id == 2 || Auth::user()->role_id == 1)
           <a href="{{ route('information.create') }}" class="btn btn-brand btn-icon-sm"><i class="flaticon2-plus"></i>Tambah Data</a>
+          @endif
       </div>
     </div>
   </div>

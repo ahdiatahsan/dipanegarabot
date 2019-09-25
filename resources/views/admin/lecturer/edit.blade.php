@@ -67,32 +67,34 @@
           @csrf
           @method('PUT')
 
+          @if (Auth::check() && Auth::user()->role_id == 2 || Auth::user()->role_id == 1)
           <div class="form-group">
-            <label>NIDN</label>
-            <input class="form-control" type="text" name="nidn" id="nidn" placeholder="0797123456" value="{{ old('nidn', $lecturer->nidn) }}" required autofocus>
-          </div>
+              <label>NIDN</label>
+              <input class="form-control" type="text" name="nidn" id="nidn" placeholder="0797123456" value="{{ old('nidn', $lecturer->nidn) }}" required autofocus>
+            </div>
 
-          <div class="form-group">
-            <label>Nama Dosen</label>
-            <input class="form-control" type="text" name="name" id="name" placeholder="John Doe" value="{{ old('name', $lecturer->name) }}" required>
-          </div>
+            <div class="form-group">
+              <label>Nama Dosen</label>
+              <input class="form-control" type="text" name="name" id="name" placeholder="John Doe" value="{{ old('name', $lecturer->name) }}" required>
+            </div>
 
-          <div class="form-group">
-            <label>Jenis Kelamin</label>
-            <select class="custom-select select2 select2-container" name="gender" id="gender">
-              <option value="L" {{ ($lecturer->gender == 'L') ? 'selected' : '' }}>Laki-Laki</option>
-              <option value="P" {{ ($lecturer->gender == 'P') ? 'selected' : '' }}>Perempuan</option>
-            </select>
-          </div>
+            <div class="form-group">
+              <label>Jenis Kelamin</label>
+              <select class="custom-select select2 select2-container" name="gender" id="gender">
+                <option value="L" {{ ($lecturer->gender == 'L') ? 'selected' : '' }}>Laki-Laki</option>
+                <option value="P" {{ ($lecturer->gender == 'P') ? 'selected' : '' }}>Perempuan</option>
+              </select>
+            </div>
 
-          <div class="form-group">
-            <label>Pendidikan Tertinggi</label>
-            <select class="custom-select select2 select2-container" name="degree" id="degree">
-              <option value="S1" {{ ($lecturer->degree == 'S1') ? 'selected' : '' }}>S1 - Sarjana</option>
-              <option value="S2" {{ ($lecturer->degree == 'S2') ? 'selected' : '' }}>S2 - Magister</option>
-              <option value="S3" {{ ($lecturer->degree == 'S3') ? 'selected' : '' }}>S3 - Doktor</option>
-            </select>
-          </div>
+            <div class="form-group">
+              <label>Pendidikan Tertinggi</label>
+              <select class="custom-select select2 select2-container" name="degree" id="degree">
+                <option value="S1" {{ ($lecturer->degree == 'S1') ? 'selected' : '' }}>S1 - Sarjana</option>
+                <option value="S2" {{ ($lecturer->degree == 'S2') ? 'selected' : '' }}>S2 - Magister</option>
+                <option value="S3" {{ ($lecturer->degree == 'S3') ? 'selected' : '' }}>S3 - Doktor</option>
+              </select>
+            </div>
+          @endif
 
           <div class="form-group">
             <label>Kehadiran</label>

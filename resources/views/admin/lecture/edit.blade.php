@@ -62,11 +62,12 @@
   <div class="kt-portlet__body">
     {{-- Begin::Contetn --}}
     <form action="{{ route('lecture.update', $lecture->id) }}" method="POST">
-      <div class="kt-portlet__body">
+      <div class="kt-portlet__body" style="padding-bottom: 300px">
         <div class="kt-section kt-section--first">
           @csrf
           @method('PUT')
 
+          @if (Auth::check() && Auth::user()->role_id == 2 || Auth::user()->role_id == 1)
           <div class="form-group">
               <label>Nama Ruangan</label>
               <select class="custom-select select2 select2-container" name="room_id" id="room_id">
@@ -102,7 +103,7 @@
                 @endforeach
               </select>
             </div>
-
+            @endif
             <div class="form-group">
               <label>Status Perkuliahan</label>
               <select class="custom-select select2 select2-container" name="status" id="status">
