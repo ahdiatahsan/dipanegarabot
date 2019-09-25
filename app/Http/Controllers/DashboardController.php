@@ -2,6 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
+use App\File;
+use App\Information;
+use App\InformationCategory;
+use App\Lecture;
+use App\LectureHour;
+use App\Lecturer;
+use App\Room;
+use App\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,7 +22,17 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.index');
+        $course = Course::count();
+        $file = File::count();
+        $information = Information::count();
+        $informationCategory = InformationCategory::count();
+        $lecture = Lecture::count();
+        $lectureHour = LectureHour::count();
+        $lecturer = Lecturer::count();
+        $room = Room::count();
+        $user = User::count();
+
+        return view('admin.dashboard.index', compact('course', 'file', 'information', 'informationCategory', 'lecture', 'lectureHour', 'lecturer', 'room', 'user'));
     }
 
     /**
