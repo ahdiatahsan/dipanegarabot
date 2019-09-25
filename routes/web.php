@@ -38,7 +38,6 @@ Route::group(['middleware' => ['auth','superAdmin']], function () {
 Route::group(['middleware' => ['auth','admin']], function () {
     Route::resource('course', 'CourseController');
     Route::resource('file', 'FileController');
-    Route::resource('information', 'InformationController');
     Route::resource('informationCategory', 'InformationCategoryController');
     Route::resource('lectureHour', 'LectureHourController');
     Route::resource('room', 'RoomController');
@@ -46,6 +45,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
 
 Route::group(['middleware' => ['auth']], function () {
     Route::resource('dashboard', 'DashboardController');
+    Route::resource('information', 'InformationController');
     Route::resource('lecture', 'LectureController');
     Route::resource('lecturer', 'LecturerController');
 });
