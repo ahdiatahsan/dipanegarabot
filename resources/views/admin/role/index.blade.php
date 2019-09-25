@@ -49,7 +49,7 @@
     </div>
     <div class="kt-portlet__head-toolbar">
       <div class="kt-portlet__head-wrapper">
-          <a href="{{ route('role.create') }}" class="btn btn-brand btn-icon-sm"><i class="flaticon2-plus"></i>Tambah Data</a>
+          {{-- <a href="{{ route('role.create') }}" class="btn btn-brand btn-icon-sm"><i class="flaticon2-plus"></i>Tambah Data</a> --}}
       </div>
     </div>
   </div>
@@ -63,7 +63,7 @@
               <tr role="row">
                 <th class="sorting kt-font-primary kt-font-bolder" style="width: 20px">No.</th>
                 <th class="sorting kt-font-primary kt-font-bolder">Nama Peran</th>
-                <th class="sorting_disabled kt-font-primary kt-font-bolder kt-align-center" style="min-width: 80px">Tindakan</th>
+                {{-- <th class="sorting_disabled kt-font-primary kt-font-bolder kt-align-center" style="min-width: 80px">Tindakan</th> --}}
               </tr>
             </thead>
           </table>
@@ -87,7 +87,7 @@
       columns: [
         { data: 'DT_RowIndex', name: 'DT_RowIndex' },
         { data: 'name', name: 'name' },
-        { data: 'action', name: 'action', orderable: false, searchable: false },
+        // { data: 'action', name: 'action', orderable: false, searchable: false },
       ]
     });
   });
