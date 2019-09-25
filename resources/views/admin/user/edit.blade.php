@@ -104,7 +104,6 @@
             <div class="col-lg-5"></div>
             <div class="col-lg-7">
               <button type="submit" class="btn btn-primary"><i class="flaticon2-pen"></i> Ubah</button>
-              <button type="reset" class="btn btn-dark"><i class="flaticon2-refresh"></i> Batal</button>
             </div>
           </div>
         </div>
