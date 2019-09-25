@@ -9,7 +9,6 @@
         <span class="kt-menu__link-text">Dashboard</span></a>
       </li>
 
-      @if (Auth::check() && Auth::user()->role_id == 2 || Auth::user()->role_id == 1)
         {{-- Informasi Umum --}}
       <li class="kt-menu__section ">
         <h4 class="kt-menu__section-text">Informasi Umum</h4>
@@ -35,6 +34,7 @@
               <div><span class="kt-menu__arrow"></span></div>
             </li>
 
+            @if (Auth::check() && Auth::user()->role_id == 2 || Auth::user()->role_id == 1)
             <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('informationCategory*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
               <a href="/informationCategory" class="kt-menu__link kt-menu__toggle">
                 <i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
@@ -43,10 +43,12 @@
               </a>
               <div><span class="kt-menu__arrow"></span></div>
             </li>
+            @endif
           </ul>
         </div>
       </li>
 
+      @if (Auth::check() && Auth::user()->role_id == 2 || Auth::user()->role_id == 1)
       <li class="kt-menu__item  kt-menu__item--submenu @if(request()->is('file*')) {{ 'kt-menu__item--active' }} @endif" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
         <a href="/file" class="kt-menu__link">
           <i class="kt-menu__link-icon flaticon2-file-1"></i>
@@ -54,8 +56,8 @@
           <i class="kt-menu__ver-arrow la la-angle-right"></i>
         </a>
       </li>
-      {{-- End::Informasi Umum --}}
       @endif
+      {{-- End::Informasi Umum --}}
 
       {{-- Begin::Perkuliahan --}}
       <li class="kt-menu__section ">
