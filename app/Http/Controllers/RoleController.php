@@ -13,28 +13,28 @@ class RoleController extends Controller
     {
         return Datatables::of(Role::all())
         ->addIndexColumn()
-        ->addColumn('action', function($role){
-            $actions =
-            '<div class="kt-align-center">'.
-                '<span class="dropdown" title="Pilihan">'.
-                    '<a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="false">'.
-                    '<i class="flaticon2-menu-4"></i>'.
-                    '</a>'.
-                    '<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-32px, 27px, 0px);">'.
-                    '<form action="'.route('role.destroy', $role->id).'" method="POST">'.
-                        '<input type="hidden" name="_token" value="'.csrf_token().'">'.
-                        '<input type="hidden" name="_method" value="DELETE">'.
-                        '<button type="submit" class="dropdown-item kt-font-bolder kt-font-danger" OnClick="return confirm(\'Hapus data ini ?\')"><i class="la la-remove kt-font-danger"></i> Hapus</button>'.
-                        '<a class="dropdown-item kt-font-bolder kt-font-success" href="'.route('role.edit', $role->id).'"><i class="la la-edit kt-font-success"></i> Ubah</a>'.
-                    '</form>'.
-                    '</div>'.
-                '</span>'.
-                '<a href="'. route('role.show', $role->id) .'" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Lihat Detail">'.
-                    '<i class="flaticon2-search"></i>'.
-                '</a>'.
-            '</div>';
-            return $actions;
-        })
+        // ->addColumn('action', function($role){
+        //     $actions =
+        //     '<div class="kt-align-center">'.
+        //         '<span class="dropdown" title="Pilihan">'.
+        //             '<a href="#" class="btn btn-sm btn-clean btn-icon btn-icon-md" data-toggle="dropdown" aria-expanded="false">'.
+        //             '<i class="flaticon2-menu-4"></i>'.
+        //             '</a>'.
+        //             '<div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-32px, 27px, 0px);">'.
+        //             '<form action="'.route('role.destroy', $role->id).'" method="POST">'.
+        //                 '<input type="hidden" name="_token" value="'.csrf_token().'">'.
+        //                 '<input type="hidden" name="_method" value="DELETE">'.
+        //                 '<button type="submit" class="dropdown-item kt-font-bolder kt-font-danger" OnClick="return confirm(\'Hapus data ini ?\')"><i class="la la-remove kt-font-danger"></i> Hapus</button>'.
+        //                 '<a class="dropdown-item kt-font-bolder kt-font-success" href="'.route('role.edit', $role->id).'"><i class="la la-edit kt-font-success"></i> Ubah</a>'.
+        //             '</form>'.
+        //             '</div>'.
+        //         '</span>'.
+        //         '<a href="'. route('role.show', $role->id) .'" class="btn btn-sm btn-clean btn-icon btn-icon-md" title="Lihat Detail">'.
+        //             '<i class="flaticon2-search"></i>'.
+        //         '</a>'.
+        //     '</div>';
+        //     return $actions;
+        // })
         ->rawColumns(['action'])
         ->make(true);
     }
@@ -67,13 +67,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|max:255',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|max:255',
+        // ]);
 
-        Role::create($request->all());
+        // Role::create($request->all());
 
-        return redirect()->route('role.index')->with('success', 'Data peran berhasil ditambah.');
+        // return redirect()->route('role.index')->with('success', 'Data peran berhasil ditambah.');
     }
 
     /**
@@ -107,13 +107,13 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        $request->validate([
-            'name' => 'required|max:255',
-        ]);
+        // $request->validate([
+        //     'name' => 'required|max:255',
+        // ]);
 
-        $role->update($request->all());
+        // $role->update($request->all());
 
-        return redirect()->route('role.index')->with('success', 'Data peran berhasil diubah.');
+        // return redirect()->route('role.index')->with('success', 'Data peran berhasil diubah.');
     }
 
     /**
@@ -124,7 +124,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        $role->delete();
-        return redirect()->route('role.index')->with('success', 'Data peran berhasil dihapus.');
+        // $role->delete();
+        // return redirect()->route('role.index')->with('success', 'Data peran berhasil dihapus.');
     }
 }
