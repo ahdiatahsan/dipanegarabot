@@ -35,11 +35,13 @@ class BotManController extends Controller
                 $status = "Tidak Hadir";
             }
 
-            $bot->reply(<<<EOT
-            Nama Dosen : $lecturer->name
-            Pendidikan Tertinggi : $lecturer->degree
-            Kehadiran : $status
-            EOT);
+            $bot->reply(
+                <<<EOT
+                Nama Dosen : $lecturer->name
+                Pendidikan Tertinggi : $lecturer->degree
+                Jenis Kelamin : $lecturer->gender
+                Kehadiran : $status
+                EOT);
         });
 
         //Perintah Mata Kuliah
@@ -49,11 +51,12 @@ class BotManController extends Controller
                 ->orWhere('code', 'like', '%'.$hear.'%')
                 ->first();
 
-            $bot->reply(<<<EOT
-            Kode : $course->code
-            Mata Kuliah : $course->name
-            SKS : $course->credit
-            EOT);
+            $bot->reply(
+                <<<EOT
+                Kode : $course->code
+                Mata Kuliah : $course->name
+                SKS : $course->credit
+                EOT);
         });
 
         //Perintah Perkuliahan
@@ -80,13 +83,13 @@ class BotManController extends Controller
             }
 
             $bot->reply(
-            <<<EOT
-            Ruangan : $lecture->room
-            Mata Kuliah : $lecture->course
-            Jam Kuliah : $lecture->time
-            Dosen : $lecture->lecturer
-            Status Perkuliahan : $status
-            EOT);
+                <<<EOT
+                Ruangan : $lecture->room
+                Mata Kuliah : $lecture->course
+                Jam Kuliah : $lecture->time
+                Dosen : $lecture->lecturer
+                Status Perkuliahan : $status
+                EOT);
         });
 
         //informasi perkuliahan
