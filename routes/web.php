@@ -30,6 +30,21 @@ Route::any('getUser', 'UserController@getData')->name('user.getData');
 Route::get('/botman/tinker', 'BotManController@tinker');
 Route::match(['get', 'post'], '/botman', 'BotManController@handle');
 
+
+Route::get('lecturerList', 'LecturerController@list');
+Route::get('courseList', 'CourseController@list');
+Route::get('lectureList', 'LectureController@list');
+Route::get('informationList', 'InformationController@list');
+Route::get('fileList', 'FileController@list');
+Route::get('roomList', 'RoomController@list');
+
+Route::any('getLecturerList', 'LecturerController@getList')->name('lecturer.getList');
+Route::any('getCourseList', 'CourseController@getList')->name('course.getList');
+Route::any('getLectureList', 'LectureController@getList')->name('lecture.getList');
+Route::any('getInformationList', 'InformationController@getList')->name('information.getList');
+Route::any('getFileList', 'FileController@getList')->name('file.getList');
+Route::get('getRoomList', 'RoomController@getList')->name('room.getList');
+
 Route::group(['middleware' => ['auth','superAdmin']], function () {
     Route::resource('role', 'RoleController');
     Route::resource('user', 'UserController');
