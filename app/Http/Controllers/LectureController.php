@@ -80,6 +80,26 @@ class LectureController extends Controller
         ->make(true);
     }
 
+    public function getList()
+    {
+        $query = DB::table('lectures')
+        ->join('rooms', 'lectures.room_id', '=', 'rooms.id')
+        ->select([
+            'rooms.name',
+            'lectures.id'
+        ]);
+
+        return Datatables::of($query)
+        ->addIndexColumn()
+        ->setRowId('lectures.id')
+        ->make(true);
+    }
+
+    public function list()
+    {
+        return view('admin.lecture.list');
+    }
+
     /**
      * Display a listing of the resource.
      *

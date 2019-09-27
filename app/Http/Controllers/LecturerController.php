@@ -57,6 +57,19 @@ class LecturerController extends Controller
         ->rawColumns(['action'])
         ->make(true);
     }
+
+    public function getList()
+    {
+        return Datatables::of(Lecturer::all())
+        ->addIndexColumn()
+        ->make(true);
+    }
+
+    public function list()
+    {
+        return view('admin.lecturer.list');
+    }
+
     /**
      * Display a listing of the resource.
      *

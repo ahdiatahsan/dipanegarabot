@@ -61,6 +61,19 @@ class InformationController extends Controller
         ->rawColumns(['action'])
         ->make(true);
     }
+
+    public function getList()
+    {
+        return Datatables::of(Information::all())
+        ->addIndexColumn()
+        ->make(true);
+    }
+
+    public function list()
+    {
+        return view('admin.information.list');
+    }
+
     /**
      * Display a listing of the resource.
      *

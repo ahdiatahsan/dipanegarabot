@@ -19,10 +19,35 @@ class BotManController extends Controller
         $botman = app('botman');
 
         $botman->hears('/start', function ($bot) {
-            $bot->reply('Your First Response');
+            $bot->reply(
+            <<<EOT
+                Hai saya adalah Dipanegara Chatbot, silahkan bertanya seputar perkuliahan di STMIK Dipanegara Makassar dengan cara mengirim perintah seperti di bawah ini :
+
+                /dosen [nama dosen]
+                Untuk menemukan informasi dosen.
+
+                /matkul [nama/kode mata kuliah]
+                Untuk menemukan informasi mata kuliah.
+
+                /kuliah [nama ruangan]
+                Untuk menemukan informasi perkuliahan.
+
+                /informasi [nama informasi]
+                Untuk menemukan informasi umum terkini.
+
+                /file [nama file]
+                Untuk menemukan dan mengunduh file.
+
+                /ruang [nama ruangan]
+                Untuk menemukan informasi lokasi ruangan.
+
+                /perintah
+                Menampilkan tautan daftar perintah chatbot.
+
+            EOT);
         });
 
-        // Untuk Dosen
+        // Perintah menampilkan dosen
         $botman->hears('/dosen {hear}', function ($bot, $hear) {
             $lecturer = DB::table('lecturers')
                 ->where('name', 'like', '%'.$hear.'%')
@@ -37,6 +62,9 @@ class BotManController extends Controller
 
             $bot->reply(
                 <<<EOT
+                INFORMASI DOSEN
+
+                NIDN : $lecturer->nidn
                 Nama Dosen : $lecturer->name
                 Pendidikan Tertinggi : $lecturer->degree
                 Jenis Kelamin : $lecturer->gender
@@ -44,7 +72,7 @@ class BotManController extends Controller
                 EOT);
         });
 
-        //Perintah Mata Kuliah
+        //Perintah menampilkan mata kuliah
         $botman->hears('/matkul {hear}', function ($bot, $hear) {
             $course = DB::table('courses')
                 ->where('name', 'like', '%'.$hear.'%')
@@ -53,13 +81,15 @@ class BotManController extends Controller
 
             $bot->reply(
                 <<<EOT
+                INFORMASI MATA KULIAH
+
                 Kode : $course->code
                 Mata Kuliah : $course->name
                 SKS : $course->credit
                 EOT);
         });
 
-        //Perintah Perkuliahan
+        //Perintah menampilkan perkuliahan
         $botman->hears('/kuliah {hear}', function ($bot, $hear) {
             $lecture = DB::table('lectures')
             ->join('rooms', 'lectures.room_id', '=', 'rooms.id')
@@ -84,6 +114,8 @@ class BotManController extends Controller
 
             $bot->reply(
                 <<<EOT
+                INFORMASI PERKULIAHAN
+
                 Ruangan : $lecture->room
                 Mata Kuliah : $lecture->course
                 Jam Kuliah : $lecture->time
@@ -98,7 +130,12 @@ class BotManController extends Controller
             ->where('name', 'like', '%'.$hear.'%')
             ->first();
 
-            $bot->reply($information->body);
+            $bot->reply(
+                <<<EOT
+                INFORMASI
+
+                $information->body
+                EOT);
         });
 
         //informasi File
@@ -123,11 +160,23 @@ class BotManController extends Controller
 
             $bot->reply(
                 <<<EOT
+                INFORMASI RUANGAN
+
                 Nama Ruangan : $room->name
                 Lantai : $room->floor
                 Gedung : $room->building
                 EOT
             );
+        });
+
+        //list perintah
+        $botman->hears('/perintah', function (BotMan $bot) {
+            $bot->reply('Daftar Perintah Dosen '.url('/lecturerList'));
+            $bot->reply('Daftar Perintah Matakuliah '.url('/courseList'));
+            $bot->reply('Daftar Perintah Kuliah '.url('/lectureList'));
+            $bot->reply('Daftar perintah Informasi '.url('/informationList'));
+            $bot->reply('Daftar perintah File '.url('/fileList'));
+            $bot->reply('Daftar perintah Ruang '.url('/roomList'));
         });
 
         //Fallback Error

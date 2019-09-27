@@ -39,6 +39,19 @@ class CourseController extends Controller
         ->make(true);
     }
 
+    public function getList()
+    {
+        return Datatables::of(Course::all())
+        ->addIndexColumn()
+        ->make(true);
+    }
+
+    public function list()
+    {
+        $courses = Course::all();
+        return view('admin.course.list', compact('courses'));
+    }
+
     /**
      * Display a listing of the resource.
      *

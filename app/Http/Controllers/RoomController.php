@@ -39,6 +39,18 @@ class RoomController extends Controller
         ->make(true);
     }
 
+    public function getList()
+    {
+        return Datatables::of(Room::all())
+        ->addIndexColumn()
+        ->make(true);
+    }
+
+    public function list()
+    {
+        return view('admin.room.list');
+    }
+
     /**
      * Display a listing of the resource.
      *

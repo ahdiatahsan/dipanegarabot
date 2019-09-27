@@ -40,6 +40,18 @@ class FileController extends Controller
         ->make(true);
     }
 
+    public function getList()
+    {
+        return Datatables::of(File::all())
+        ->addIndexColumn()
+        ->make(true);
+    }
+
+    public function list()
+    {
+        return view('admin.file.list');
+    }
+
     /**
      * Display a listing of the resource.
      *
