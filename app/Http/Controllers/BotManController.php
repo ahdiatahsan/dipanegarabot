@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use BotMan\BotMan\BotMan;
-use Illuminate\Http\Request;
 use App\Conversations\ExampleConversation;
-use Illuminate\Support\Facades\DB;
+use BotMan\BotMan\BotMan;
 use BotMan\BotMan\Messages\Attachments\File;
 use BotMan\BotMan\Messages\Outgoing\OutgoingMessage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BotManController extends Controller
 {
@@ -18,7 +18,7 @@ class BotManController extends Controller
     {
         $botman = app('botman');
 
-        $botman->hears('/start', function ($bot) {
+        $botman->hears('/start|help|start|info|test' , function ($bot) {
             $bot->reply(
             <<<EOT
                 Hai saya adalah Dipanegara Chatbot, silahkan bertanya seputar perkuliahan di STMIK Dipanegara Makassar dengan cara mengirim perintah seperti di bawah ini :
@@ -27,10 +27,10 @@ class BotManController extends Controller
                 Untuk menemukan informasi dosen.
 
                 /matkul [nama/kode mata kuliah]
-                Untuk menemukan informasi mata kuliah.
+                Untuk menemukan informasi mata kuliah
 
                 /kuliah [nama ruangan]
-                Untuk menemukan informasi perkuliahan.
+                Untuk menemukan informasi perkuliahan yang sedang berlangsung.
 
                 /informasi [nama informasi]
                 Untuk menemukan informasi umum terkini.
@@ -43,7 +43,6 @@ class BotManController extends Controller
 
                 /perintah
                 Menampilkan tautan daftar perintah chatbot.
-
             EOT);
         });
 
@@ -103,14 +102,7 @@ class BotManController extends Controller
                 'lectures.status as status',
                 'rooms.name as room',
             ])
-            ->where('rooms.name', 'like', '%'.$hear.'%')->first();
-
-            $status;
-            if ($lecture->status == 1) {
-                $status = 'Berlangsung';
-            }else{
-                $status = 'Tidak Berlangsung';
-            }
+            ->where([['rooms.name', 'like', '%'.$hear.'%'], ['lectures.status', '=', 1]])->first();
 
             $bot->reply(
                 <<<EOT
@@ -120,7 +112,7 @@ class BotManController extends Controller
                 Mata Kuliah : $lecture->course
                 Jam Kuliah : $lecture->time
                 Dosen : $lecture->lecturer
-                Status Perkuliahan : $status
+                Status Perkuliahan : Berlangsung
                 EOT);
         });
 
@@ -181,7 +173,7 @@ class BotManController extends Controller
 
         //Fallback Error
         $botman->fallback(function($bot) {
-            $bot->reply('Perintah yang anda input salah !');
+            $bot->reply('Perintah yang anda input salah !, untuk mengetahui perintah yang ada silakan masukkan perintah /start atau help');
         });
 
         $botman->listen();
