@@ -33,7 +33,6 @@ Route::any('getRole', 'RoleController@getData')->name('role.getData');
 Route::any('getRoom', 'RoomController@getData')->name('room.getData');
 Route::any('getUser', 'UserController@getData')->name('user.getData');
 Route::get('/botman/tinker', 'BotManController@tinker');
-Route::get('/botman/tinker', 'BotManController@tinker');
 Route::get('courseList', 'CourseController@list');
 Route::get('fileList', 'FileController@list');
 Route::get('getRoomList', 'RoomController@getList')->name('room.getList');
